@@ -18,7 +18,8 @@
 	:  .findall(b(V,A),bid(Service,V)[source(A)],L)
     <- .max(L,b(V,W)); //get the max from L and put the result on b(V,W)
        .print("Winner for ", Service, " is ",W," with ", V, ". Partecipants=",L);
-       .broadcast(tell, winner(Service,W)).
+       .broadcast(tell, winner(Service,W));
+       .broadcast(untell, auction(service, Service)).
 
 
 { include("$jacamoJar/templates/common-cartago.asl") }
