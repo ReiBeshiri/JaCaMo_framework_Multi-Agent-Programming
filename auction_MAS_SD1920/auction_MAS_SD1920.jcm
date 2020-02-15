@@ -14,9 +14,12 @@
 
 mas auction_MAS_SD1920 {
 
-    agent sample_agent
-
+    agent auctioneer   : auctioneer.asl
     
+    agent participant1 : participant.asl
+    agent participant2 : participant.asl
+    agent participant3 : participant.asl
+    agent participant4 : participant.asl
 
 }
 
