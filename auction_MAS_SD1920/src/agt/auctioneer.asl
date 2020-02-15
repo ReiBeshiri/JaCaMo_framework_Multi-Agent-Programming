@@ -5,7 +5,10 @@
 
 /* Plans */
 /* Send a broadcast msg to all agents to tell the auction is open*/
-+!start <- .broadcast(tell, auction(service, lot(item5,item6,"electronic good"))).
++!start <- .broadcast(tell, auction(service, lot(item5,item6,"electronic good")));
+		   .broadcast(tell, auction(service, lot(item7,item8,"hardware components"))).
+/* Start two auction at the same time, and executed concurrently. Participants can produce bids concurrently */
+	
 
 /* receives bids and checks for new winner*/
 +bid(Service, _)
