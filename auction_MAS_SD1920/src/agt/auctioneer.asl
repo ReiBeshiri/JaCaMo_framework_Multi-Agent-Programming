@@ -20,6 +20,8 @@
        .print("Winner for ", Service, " is ",W," with ", V, ". Partecipants=",L);
        .broadcast(tell, winner(Service,W));
        .broadcast(untell, auction(service, Service)).
+       //.kill_all_agents
+       //.suspend
 
 
 { include("$jacamoJar/templates/common-cartago.asl") }
