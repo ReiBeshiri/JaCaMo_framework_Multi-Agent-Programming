@@ -43,4 +43,19 @@ public class AuctionArtifact extends Artifact {
         }
         System.out.println("Received bid "+bidValue+" from "+getCurrentOpAgentId().getAgentName()+" for "+getObsProperty("task").stringValue());
     }
+    
+    @OPERATION public void rebid(double bidValue) {
+    	if (getObsProperty("running").stringValue().equals("no"))
+            failed("You can not bid, auction not available. It is not running!");
+
+        ObsProperty opCurrentValue  = getObsProperty("best_bid");
+        if (bidValue > opCurrentValue.doubleValue() && currentWinner != getCurrentOpAgentId().getAgentName()) {  // the bid is better than the previous
+            opCurrentValue.updateValue(bidValue);
+            currentWinner = getCurrentOpAgentId().getAgentName(); // the name of the agent doing this operation
+            System.out.println("Received rebid "+bidValue+" from "+getCurrentOpAgentId().getAgentName()+" for "+getObsProperty("task").stringValue());
+        }
+        //System.out.println("winner of: "+getObsProperty("task").stringValue()+"is: "+currentWinner);
+        //System.out.println("me: "+getCurrentOpAgentId().getAgentName());
+        //System.out.println(currentWinner != getCurrentOpAgentId().getAgentName());
+    }
 }
