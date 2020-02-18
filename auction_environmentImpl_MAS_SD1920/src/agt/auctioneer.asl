@@ -22,6 +22,16 @@
       ?NS::best_bid(V);
       .print("Winner v2 for ", S, " is ",W," with ", V).
 
+/*Failure handlers */
+//failure handler, in this case the auctioneer has an error starting the environment, so it retey the execution
+-!start(Id,P)
+	<- .print("error in starting the environment... retrying");
+	   !start(Id,P).
+
+//failure handler, in this case the event "decide" is not caught correctly, so it will generate the same event
+-!decide(Id)
+	<- .print("error: creating the decide event");
+		!decide(Id).
 
 /*
 +!start

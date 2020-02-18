@@ -23,6 +23,16 @@
        //.kill_all_agents
        //.suspend
 
+/*Failure handlers */
+//failure in start intentions, when the auctioneer is trying to broadcast the start message
+-!start
+	<- .print("error starting the auction, retrying...");
+	   !start.
+	
+//failure when decide event is caught, regenerating the event
+-!decide(Service)
+	<- .print("error: creating the decide event");
+		!decide(Service).
 
 { include("$jacamoJar/templates/common-cartago.asl") }
 { include("$jacamoJar/templates/common-moise.asl") }

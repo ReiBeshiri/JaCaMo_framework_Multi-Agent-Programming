@@ -25,6 +25,11 @@
       .print("Bid ",MV*1.1, " for ",S).
 
 
+/*Failure handler */
+//retrying to bid, generating the same event
+-!bid(S)
+	<- !bid(S).
+
 //include
 { include("$jacamoJar/templates/common-cartago.asl") }
 { include("$jacamoJar/templates/common-moise.asl") }

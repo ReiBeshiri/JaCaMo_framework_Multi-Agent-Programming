@@ -20,8 +20,18 @@
 	   rebid(W + math.random * 15)[artifact_id(AId)];
 	   ?rebid(AId).
 
+
+/* Failure Handlers */
 //failure handling plans, in this case it's equivalent to the end of the auction
 -?rebid(AId): true <- true.
+
+//failure handler, in this case there was a problem executing !focus, so the agent retry.
+-!focus(A) 
+	<- .print("error in the execution of a goal, trying to execute it again...");
+		!focus(A).
+
+
+
 
 /*
 +task(D) : running("yes") <- bid(math.random * 100 + 10).
