@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 import cartago.*;
 
@@ -67,6 +66,8 @@ public class AuctionArtifact extends Artifact {
         if (bidValue > opCurrentValue.doubleValue()) {  // the bid is better than the previous
             opCurrentValue.updateValue(bidValue);
             currentWinner = getCurrentOpAgentId().getAgentName(); // the name of the agent doing this operation
+            System.out.println( "[" + getCurrentOpAgentId().getAgentName() + "]" + "relaunched with " + bidValue + 
+            		" and now is winning the auction " + getId().toString() + "!!!");
         }
         System.out.println("Received bid "+bidValue+" from "+getCurrentOpAgentId().getAgentName()+" for "+getObsProperty("task").stringValue());
         auctionInfo.put(bidValue, "bid from "+getCurrentOpAgentId().getAgentName() + " for " + getId().toString());
@@ -81,7 +82,9 @@ public class AuctionArtifact extends Artifact {
         ObsProperty opCurrentValue  = getObsProperty("best_bid");
         if (bidValue > opCurrentValue.doubleValue() && currentWinner != getCurrentOpAgentId().getAgentName()) {  // the bid is better than the previous
             opCurrentValue.updateValue(bidValue);
-            currentWinner = getCurrentOpAgentId().getAgentName(); // the name of the agent doing this operation            
+            currentWinner = getCurrentOpAgentId().getAgentName(); // the name of the agent doing this operation    
+            System.out.println( "[" + getCurrentOpAgentId().getAgentName() + "]" + "relaunched with " + bidValue + 
+            		" and now is winning the auction " + getId().toString() + "!!!");
         }
         System.out.println("Received rebid "+bidValue+" from "+getCurrentOpAgentId().getAgentName()+" for "+getObsProperty("task").stringValue());
         auctionInfo.put(bidValue, "bid from "+getCurrentOpAgentId().getAgentName()+ " for " + getId().toString());
