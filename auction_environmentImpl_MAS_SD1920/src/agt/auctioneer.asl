@@ -23,7 +23,7 @@
       .print("Winner v2 for ", S, " is ",W," with ", V).
 
 /*Failure handlers */
-//failure handler, in this case the auctioneer has an error starting the environment, so it retey the execution
+//failure handler, in this case the auctioneer has an error starting the environment, so it retry the execution
 -!start(Id,P)
 	<- .print("error in starting the environment... retrying");
 	   !start(Id,P).

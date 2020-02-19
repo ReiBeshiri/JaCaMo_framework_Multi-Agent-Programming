@@ -9,7 +9,6 @@
       focus(ToolId);.
       //!rebid(A,ToolId).
 
-
 +task(D)[artifact_id(AId)] : running("yes")[artifact_id(AId)] & not winner(.my_name)
    <- bid(math.random * 100 + 10)[artifact_id(AId)];?rebid(AId).
 

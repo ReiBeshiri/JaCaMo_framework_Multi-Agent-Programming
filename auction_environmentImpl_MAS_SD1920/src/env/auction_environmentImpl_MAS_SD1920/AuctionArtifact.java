@@ -44,7 +44,6 @@ public class AuctionArtifact extends Artifact {
             failed("The protocol is not running, you cannot stop it!");
         	errorMsg = "already_stopped";
         }
-
         getObsProperty("running").updateValue("no");
         getObsProperty("winner").updateValue(new Atom(currentWinner));
         //lambda not allowed with this java version
@@ -61,7 +60,6 @@ public class AuctionArtifact extends Artifact {
             failed("You can not bid, auction not available. It is not running!");
         	errorMsg = "bid_intention";
         }
-
         ObsProperty opCurrentValue  = getObsProperty("best_bid");
         if (bidValue > opCurrentValue.doubleValue()) {  // the bid is better than the previous
             opCurrentValue.updateValue(bidValue);
@@ -78,7 +76,6 @@ public class AuctionArtifact extends Artifact {
             failed("You can not bid, auction not available. It is not running!");
     		errorMsg = "bid_intention";
     	}
-
         ObsProperty opCurrentValue  = getObsProperty("best_bid");
         if (bidValue > opCurrentValue.doubleValue() && currentWinner != getCurrentOpAgentId().getAgentName()) {  // the bid is better than the previous
             opCurrentValue.updateValue(bidValue);
