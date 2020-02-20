@@ -25,6 +25,7 @@ public class ScoreBoardArtifact extends Artifact {
     	for(int i = 0; i<sortedKeys.size(); i++) {
     		System.out.println(sortedKeys.get(i) + " " + auctionInfo.get(sortedKeys.get(i)).toString());
     	}
+    	System.out.println("Top scorer: " + auctionInfo.get(sortedKeys.get(sortedKeys.size()-1)).toString() + " with " + sortedKeys.get(sortedKeys.size()-1));
 	}
 	
 	static void addBidToScoreboard(Double bid, String s, String id) {

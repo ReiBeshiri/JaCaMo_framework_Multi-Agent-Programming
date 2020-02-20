@@ -29,7 +29,13 @@
        
 +!endauction(Idsublist, Idscoreboard, Idauction,P)  
 	<- .print("Auction finished");
-	   Idauction::stop;.
+	   Idauction::stop;
+	   !printscore(Idscoreboard).
+	   
++!printscore(Idscoreboard)
+	<- lookupArtifact(Idscoreboard, Artid);
+	   focus(Artid);
+	   getScoreboard.
       
 +NS::winner(W) : W \== no_winner
    <- ?NS::task(S);
