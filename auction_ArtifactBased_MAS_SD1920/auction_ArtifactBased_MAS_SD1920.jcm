@@ -16,7 +16,6 @@ mas auction_ArtifactBased_MAS_SD1920 {
 
     agent auctioneer   : auctioneer.asl {
     	goals: start(open_a1, score_a1, a1, "lot(item5,item6, electronic good)")
-    		   //start("a2", "lot(item7,item8, hardware material)")
     }
     
     agent participant1 : participant.asl

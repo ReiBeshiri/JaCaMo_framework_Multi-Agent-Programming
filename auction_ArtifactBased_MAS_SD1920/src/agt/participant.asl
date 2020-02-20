@@ -13,21 +13,25 @@
 	   
 	   
 +!startbid(Idauction)
-	<- lookupArtifact(Idsublist, Artid);
-	   Idauction::focus(Artid);
-	   !bid(Idsublist, Artid).
+	<- lookupArtifact(Idauction, Artid);
+	   focus(Artid);
+	   !bids(Idauction, Artid).
 	
 	
-+!bid(Idsublist, Artid): running("yes")[artifact_id(Artid)] & not winner(.my_name) & best_bid(W)
++!bids(Idauction, Artid): running("yes")[artifact_id(Artid)] & not winner(.my_name) & best_bid(W)
 	<- .wait(500);
 	   bid(W + math.random * 15)[artifact_id(AId)];
-	   !bid(Idsublist, Artid).
+	   !bids(Idauction, Artid).
 
 
--!startsub(Idsublist) : true <- .print("error start sub part").
--!subtoauction(Idsublist, Artid) : true <- .print("error subtoauction part").
--!startbid(Idauction) : true <- .print("error startbid part").
--!bid(Idsublist, Artid) : true <- .print("error bid part").
+-!startsub(Idsublist) : true 
+	<- .print("error during the sub in the auction list, retrying... ");
+	   !startsub(Idsublist).
+-!startbid(Idauction) : true 
+	<- .print("error in starting the bid, retrying...");
+	   !startbid(Idauction).
+-!bids(Idauction, Artid) : true 
+	<- stopFocus(Artid).
 
 { include("$jacamoJar/templates/common-cartago.asl") }
 { include("$jacamoJar/templates/common-moise.asl") }

@@ -28,7 +28,7 @@
        .at("now + 10 seconds", {+!endauction(Idsublist, Idscoreboard, Idauction,P)});.
        
 +!endauction(Idsublist, Idscoreboard, Idauction,P)  
-	<- .print("Auction finisched");
+	<- .print("Auction finished");
 	   Idauction::stop;.
       
 +NS::winner(W) : W \== no_winner
