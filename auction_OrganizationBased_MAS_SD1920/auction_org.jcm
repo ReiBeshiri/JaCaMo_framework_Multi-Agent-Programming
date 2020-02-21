@@ -1,0 +1,22 @@
+mas auction_org {
+
+    agent auctioneer   : auctioneer.asl
+
+    agent participant1 : participant.asl
+    agent participant2 : participant.asl
+    agent participant3 : participant.asl
+    agent participant4 : participant.asl
+
+    organisation aorg : auction-os.xml {
+        group agrp : auctionGroup {
+            players: auctioneer      auctioneer
+                     participant1    participant
+                     participant2    participant
+                     participant3    participant
+                     participant4    participant
+            debug
+        }
+    }
+
+}
+
