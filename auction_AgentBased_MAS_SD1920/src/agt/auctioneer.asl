@@ -10,7 +10,7 @@
 		: true 
 		<- .broadcast(tell, auction(service, lot(item5,item6, "electronic good")));
 		   .broadcast(tell, auction(service, lot(item7,item8, "hardware components")));
-		   .at("now + 5 seconds", {+!decide(lot(item5,item6, "electronic good"))});
+		   .at("now + 7 seconds", {+!decide(lot(item5,item6, "electronic good"))});
 	       .at("now + 7 seconds", {+!decide(lot(item7,item8, "hardware components"))}).
 
 /* receives bids and checks for new winner*/
@@ -19,7 +19,8 @@
     <- .max(L,b(V,W)); //get the max from L and put the result on b(V,W)
        .print("Winner for ", Service, " is ",W," with ", V, ". Partecipants=",L);
        .broadcast(tell, winner(Service,W));
-       .broadcast(untell, auction(service, Service)).
+       .broadcast(untell, auction(service, Service))
+       .broadcast(achieve, endbid(ends)).
        //.kill_all_agents
        //.suspend
 
